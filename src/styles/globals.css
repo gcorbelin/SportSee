@@ -41,7 +41,6 @@ body,
   display: flex;
   flex-direction: column;
   background-color: var(--background-color-1);
-  font-family: var(--font-family-base);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   -webkit-font-smoothing: antialiased;
