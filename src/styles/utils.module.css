@@ -1,0 +1,17 @@
+.block {
+  padding: 2rem;
+  background-color: var(--background-color-3);
+  border-radius: var(--border-radius);
+}
+
+.block--theme-1 {
+  background-color: var(--theme-color-1);
+}
+
+.block--background-4 {
+  background-color: var(--background-color-4);
+}
+
+.no-padding {
+  padding: 0;
+}

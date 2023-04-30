@@ -21,7 +21,7 @@ export default function Layout({ title, description, children }: LayoutProps) {
       <Header />
       <div className={styles["main-wrapper"]}>
         <Aside />
-        <main>{children}</main>
+        <main className={styles.main}>{children}</main>
       </div>
     </>
   );

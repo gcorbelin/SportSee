@@ -9,9 +9,10 @@
   --theme-color-2: #4ab8ff;
   --theme-color-3: #f9ce23;
   --theme-color-4: #fd5181;
-  --background-color-1: #e5e5e5;
+  --background-color-1: #fff;
   --background-color-2: #020203;
   --background-color-3: #fbfbfb;
+  --background-color-4: #282d30;
   --text-color-1: #000000;
   --text-color-2: #ffffff;
   --text-color-3: #74798c;
@@ -70,4 +71,5 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+  line-height: var(--line-height-base);
 }
