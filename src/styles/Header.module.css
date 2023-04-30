@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.125rem 5.75rem 0.75rem 1.5rem;
+  background-color: var(--background-color-2);
+  color: var(--text-color-2);
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.header-nav {
+  width: 100%;
+}
+
+.header-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-left: 149px;
+  padding: 0;
+  list-style: none;
+}
+
+.header-link {
+  font-weight: 700px;
+  color: var(--text-color-2);
+  text-decoration: none;
+}
+
+.header-link:hover {
+  text-decoration: underline;
+}
