@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import Header from "@/components/Header/Header";
+import Aside from "@/components/Aside/Aside";
 import styles from "@/styles/Layout.module.css";
 
 interface LayoutProps {
@@ -19,7 +20,7 @@ export default function Layout({ title, description, children }: LayoutProps) {
       </Head>
       <Header />
       <div className={styles["main-wrapper"]}>
-        <aside>Ma side nav</aside>
+        <Aside />
         <main>{children}</main>
       </div>
     </>
