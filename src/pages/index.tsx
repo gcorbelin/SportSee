@@ -2,6 +2,8 @@ import { Inter } from "next/font/google";
 import Layout from "@/components/Layout/Layout";
 import styles from "@/styles/Home.module.css";
 import utilsStyles from "@/styles/utils.module.css";
+import DataBlock from "@/components/DataBlock/DataBlock";
+import { user } from "./api/mockedDatas";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +16,10 @@ export default function Home() {
       <div className={styles.dashboard}>
         <div className={styles.title}>
           <h1>
-            Bonjour <span className={styles["title-name"]}>[Prénom]</span>
+            Bonjour{" "}
+            <span className={styles["title-name"]}>
+              {user.data.userInfos.firstName}
+            </span>
           </h1>
           <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
         </div>
@@ -42,10 +47,34 @@ export default function Home() {
             </div>
           </div>
           <div className={styles["home-aside"]}>
-            <div className={utilsStyles.block}>Calories</div>
-            <div className={utilsStyles.block}>Protéines</div>
-            <div className={utilsStyles.block}>Glucides</div>
-            <div className={utilsStyles.block}>Lipides</div>
+            <DataBlock
+              color="red"
+              img="/assets/energy.svg"
+              data={`${user.data.keyData.calorieCount}kCal`}
+              label="Calories"
+              key="calories"
+            />
+            <DataBlock
+              color="blue"
+              img="/assets/chicken.svg"
+              data={`${user.data.keyData.proteinCount}g`}
+              label="Protéines"
+              key="proteines"
+            />
+            <DataBlock
+              color="yellow"
+              img="/assets/apple.svg"
+              data={`${user.data.keyData.carbohydrateCount}g`}
+              label="Glucides"
+              key="glucides"
+            />
+            <DataBlock
+              color="pink"
+              img="/assets/cheeseburger.svg"
+              data={`${user.data.keyData.lipidCount}g`}
+              label="Lipides"
+              key="lipides"
+            />
           </div>
         </div>
       </div>

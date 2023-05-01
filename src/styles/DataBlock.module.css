@@ -1,0 +1,48 @@
+.block {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.image-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: var(--border-radius);
+}
+
+.image-wrapper-red {
+  background-color: #ff000011;
+}
+
+.image-wrapper-blue {
+  background-color: #4ab8ff1a;
+}
+
+.image-wrapper-yellow {
+  background-color: #f9ce231a;
+}
+
+.image-wrapper-pink {
+  background-color: #fd51811a;
+}
+
+.content-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.content-value {
+  font-weight: 700;
+  color: var(--text-color-4);
+  font-size: 1.25rem;
+}
+
+.content-label {
+  font-weight: 500;
+  color: var(--text-color-3);
+  font-size: 0.875rem;
+}
