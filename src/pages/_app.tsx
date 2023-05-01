@@ -5,14 +5,17 @@ import type { AppProps } from "next/app";
 const roboto = Roboto({
   weight: ["400", "500", "700"],
   subsets: ["latin"],
+  display: "swap",
+  preload: false,
+  variable: "--font-family-base",
 });
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <style jsx global>{`
-        html {
-          font-family: ${roboto.style.fontFamily};
+        :root {
+          ${roboto.variable}: ${roboto.style.fontFamily};
         }
       `}</style>
       <Component {...pageProps} />

@@ -1,11 +1,14 @@
-import { Inter } from "next/font/google";
+import dynamic from "next/dynamic";
 import Layout from "@/components/Layout/Layout";
+import DataBlock from "@/components/DataBlock/DataBlock";
 import styles from "@/styles/Home.module.css";
 import utilsStyles from "@/styles/utils.module.css";
-import DataBlock from "@/components/DataBlock/DataBlock";
 import { user } from "./api/mockedDatas";
 
-const inter = Inter({ subsets: ["latin"] });
+// Objective component contains the recharts chart
+const Objective = dynamic(() => import("@/components/Objective/Objective"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
@@ -39,11 +42,7 @@ export default function Home() {
               >
                 Radar
               </div>
-              <div
-                className={`${utilsStyles.block} ${styles["home-aside-block"]}`}
-              >
-                KPI
-              </div>
+              <Objective score={user.data.todayScore} />
             </div>
           </div>
           <div className={styles["home-aside"]}>

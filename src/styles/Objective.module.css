@@ -1,0 +1,26 @@
+.objective {
+  position: relative;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 0.9375rem;
+}
+
+.score {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 100px;
+  max-height: 100px;
+  transform: translate(-50%, -50%);
+  font-weight: 500;
+  color: var(--text-color-3);
+  text-align: center;
+}
+
+.score strong {
+  display: block;
+  font-size: 1.6125rem;
+  color: var(--text-color-4);
+}
