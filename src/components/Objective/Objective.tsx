@@ -28,7 +28,7 @@ export default function Objective({ score }: ObjectiveProps) {
       <div className={styles.score}>
         <strong>{score * 100}%</strong> de votre objectif
       </div>
-      <ResponsiveContainer>
+      <ResponsiveContainer width={"99%"} height={200}>
         <PieChart margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
           <Pie
             data={objectifDatas}

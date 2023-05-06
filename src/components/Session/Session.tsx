@@ -21,7 +21,7 @@ export default function Session({ sessions }: SessionProps) {
       className={`${utilsStyles.block} ${utilsStyles["block-chart"]} ${utilsStyles["block--theme-1"]} ${styles.session}`}
     >
       <div className={styles.title}>Durée moyenne des sessions</div>
-      <ResponsiveContainer>
+      <ResponsiveContainer width={"99%"} height={200}>
         <LineChart
           data={sessions}
           margin={{ top: 5, right: 5, left: 5, bottom: 5 }}

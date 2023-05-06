@@ -45,19 +45,31 @@
 }
 
 .home-main-secondary {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 1.75rem;
   flex-grow: 1;
   width: 100%;
+}
+
+@media screen and (min-width: 1200px) {
+  .home-main-secondary {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 /* Aside */
 .home-aside {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 1.75rem;
-  width: 258px;
+  width: 256px;
+}
+
+@media screen and (min-width: 1200px) {
+  .home-aside {
+    justify-content: space-between;
+  }
 }
 
 .home-aside-block {
