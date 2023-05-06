@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell } from "recharts";
+import { PieChart, Pie } from "recharts";
 import styles from "@/styles/Objective.module.css";
 import utilsStyles from "@/styles/utils.module.css";
 
@@ -19,7 +19,6 @@ export default function Objective({ score }: ObjectiveProps) {
       fill: "transparent",
     },
   ];
-  const objectifColors = ["#ff0000", "transparent"];
 
   return (
     <div className={`${utilsStyles.block} ${styles.objective}`}>
