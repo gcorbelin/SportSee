@@ -1,5 +1,6 @@
 .block {
-  padding: 2rem;
+  width: 100%;
+  padding: 2vw;
   background-color: var(--background-color-3);
   border-radius: var(--border-radius);
 }
@@ -10,6 +11,10 @@
 
 .block--background-4 {
   background-color: var(--background-color-4);
+}
+
+.block-chart {
+  height: 260px;
 }
 
 .no-padding {
