@@ -1,0 +1,23 @@
+.daily {
+  position: relative;
+  height: 100%;
+  max-height: 320px;
+}
+
+.tooltip {
+  padding: 0.5rem;
+  background-color: var(--theme-color-1);
+  border-radius: 0;
+  color: var(--text-color-2);
+  font-size: 0.5rem;
+  font-weight: 500;
+}
+
+.legend {
+  display: inline-block;
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+  color: var(--text-color-3);
+  font-size: 0.875rem;
+  font-weight: 500;
+}

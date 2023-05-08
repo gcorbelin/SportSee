@@ -3,7 +3,17 @@ import Layout from "@/components/Layout/Layout";
 import DataBlock from "@/components/DataBlock/DataBlock";
 import styles from "@/styles/Home.module.css";
 import utilsStyles from "@/styles/utils.module.css";
-import { user, userSessions, userPerformance } from "./api/mockedDatas";
+import {
+  user,
+  userSessions,
+  userPerformance,
+  userActivity,
+} from "./api/mockedDatas";
+
+// Daily component contains the recharts chart
+const Daily = dynamic(() => import("@/components/Daily/Daily"), {
+  ssr: false,
+});
 
 // Objective component contains the recharts chart
 const Objective = dynamic(() => import("@/components/Objective/Objective"), {
@@ -41,9 +51,7 @@ export default function Home() {
         </div>
         <div className={styles["home-wrapper"]}>
           <div className={styles["home-main"]}>
-            <div className={`${utilsStyles.block} ${styles["home-weight"]} `}>
-              Activité quotidienne
-            </div>
+            <Daily activity={userActivity.data.sessions} />
             <div className={styles["home-main-secondary"]}>
               <Session sessions={userSessions.data.sessions} />
               <CharacterStats datas={userPerformance.data} />
