@@ -6,9 +6,13 @@ import { useEffect, useState } from "react";
 import {
   fetchUser,
   fetchActivity,
-  fetchPerformance,
+  fetchStats,
   fetchSessions,
 } from "./api/getDatas";
+import { User } from "@/models/user";
+import { UserActivity } from "@/models/activity";
+import { UserSessions } from "@/models/session";
+import { UserStats } from "@/models/stats";
 
 // Daily component contains the recharts chart
 const Daily = dynamic(() => import("@/components/Daily/Daily"), {
@@ -34,16 +38,16 @@ const Session = dynamic(() => import("@/components/Session/Session"), {
 });
 
 export default function Home() {
-  const [user, setUser] = useState();
-  const [userActivity, setUserActivity] = useState();
-  const [userSessions, setUserSessions] = useState();
-  const [userPerformance, setUserPerformance] = useState();
+  const [user, setUser] = useState<User>();
+  const [userActivity, setUserActivity] = useState<UserActivity>();
+  const [userSessions, setUserSessions] = useState<UserSessions>();
+  const [userPerformance, setUserPerformance] = useState<UserStats>();
 
   useEffect(() => {
     fetchUser().then((response) => setUser(response));
     fetchActivity().then((response) => setUserActivity(response));
     fetchSessions().then((response) => setUserSessions(response));
-    fetchPerformance().then((response) => setUserPerformance(response));
+    fetchStats().then((response) => setUserPerformance(response));
   }, []);
 
   return (
@@ -67,11 +71,7 @@ export default function Home() {
             <div className={styles["home-main-secondary"]}>
               {userSessions && <Session sessions={userSessions.sessions} />}
               {userPerformance && <CharacterStats datas={userPerformance} />}
-              {user && (
-                <Objective
-                  score={user.todayScore ? user.todayScore : user.score}
-                />
-              )}
+              {user && <Objective score={user.todayScore} />}
             </div>
           </div>
           <div className={styles["home-aside"]}>

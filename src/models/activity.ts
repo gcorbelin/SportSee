@@ -3,3 +3,8 @@ export type Activity = {
   kilogram: number;
   calories: number;
 };
+
+export type UserActivity = {
+  userId: number;
+  sessions: Activity[];
+};

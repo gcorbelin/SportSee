@@ -12,7 +12,7 @@ export type Kind = {
   "6": string;
 };
 
-export type CharacterStat = {
+export type UserStats = {
   userId: number;
   kind: Kind;
   data: Stat[];
