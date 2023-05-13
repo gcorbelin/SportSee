@@ -37,7 +37,7 @@ export default function Objective({ score }: ObjectiveProps) {
               <text
                 x={"50%"}
                 y={"50%"}
-                transform="translate(-50%,-50%)"
+                style={{ translate: "(-50%, -50%)" }}
                 textAnchor="middle"
                 alignmentBaseline="middle"
               >
