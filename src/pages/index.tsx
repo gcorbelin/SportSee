@@ -2,13 +2,13 @@ import dynamic from "next/dynamic";
 import Layout from "@/components/Layout/Layout";
 import DataBlock from "@/components/DataBlock/DataBlock";
 import styles from "@/styles/Home.module.css";
-import utilsStyles from "@/styles/utils.module.css";
+import { useEffect, useState } from "react";
 import {
-  user,
-  userSessions,
-  userPerformance,
-  userActivity,
-} from "./api/mockedDatas";
+  fetchUser,
+  fetchActivity,
+  fetchPerformance,
+  fetchSessions,
+} from "./api/getDatas";
 
 // Daily component contains the recharts chart
 const Daily = dynamic(() => import("@/components/Daily/Daily"), {
@@ -34,6 +34,18 @@ const Session = dynamic(() => import("@/components/Session/Session"), {
 });
 
 export default function Home() {
+  const [user, setUser] = useState();
+  const [userActivity, setUserActivity] = useState();
+  const [userSessions, setUserSessions] = useState();
+  const [userPerformance, setUserPerformance] = useState();
+
+  useEffect(() => {
+    fetchUser().then((response) => setUser(response));
+    fetchActivity().then((response) => setUserActivity(response));
+    fetchSessions().then((response) => setUserSessions(response));
+    fetchPerformance().then((response) => setUserPerformance(response));
+  }, []);
+
   return (
     <Layout
       title="Page d'accueil"
@@ -44,49 +56,57 @@ export default function Home() {
           <h1>
             Bonjour{" "}
             <span className={styles["title-name"]}>
-              {user.data.userInfos.firstName}
+              {user && user.userInfos.firstName}
             </span>
           </h1>
           <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
         </div>
         <div className={styles["home-wrapper"]}>
           <div className={styles["home-main"]}>
-            <Daily activity={userActivity.data.sessions} />
+            {userActivity && <Daily activity={userActivity.sessions} />}
             <div className={styles["home-main-secondary"]}>
-              <Session sessions={userSessions.data.sessions} />
-              <CharacterStats datas={userPerformance.data} />
-              <Objective score={user.data.todayScore} />
+              {userSessions && <Session sessions={userSessions.sessions} />}
+              {userPerformance && <CharacterStats datas={userPerformance} />}
+              {user && (
+                <Objective
+                  score={user.todayScore ? user.todayScore : user.score}
+                />
+              )}
             </div>
           </div>
           <div className={styles["home-aside"]}>
-            <DataBlock
-              color="red"
-              img="/assets/energy.svg"
-              data={`${user.data.keyData.calorieCount}kCal`}
-              label="Calories"
-              key="calories"
-            />
-            <DataBlock
-              color="blue"
-              img="/assets/chicken.svg"
-              data={`${user.data.keyData.proteinCount}g`}
-              label="Protéines"
-              key="proteines"
-            />
-            <DataBlock
-              color="yellow"
-              img="/assets/apple.svg"
-              data={`${user.data.keyData.carbohydrateCount}g`}
-              label="Glucides"
-              key="glucides"
-            />
-            <DataBlock
-              color="pink"
-              img="/assets/cheeseburger.svg"
-              data={`${user.data.keyData.lipidCount}g`}
-              label="Lipides"
-              key="lipides"
-            />
+            {user && (
+              <>
+                <DataBlock
+                  color="red"
+                  img="/assets/energy.svg"
+                  data={`${user.keyData.calorieCount}kCal`}
+                  label="Calories"
+                  key="calories"
+                />
+                <DataBlock
+                  color="blue"
+                  img="/assets/chicken.svg"
+                  data={`${user.keyData.proteinCount}g`}
+                  label="Protéines"
+                  key="proteines"
+                />
+                <DataBlock
+                  color="yellow"
+                  img="/assets/apple.svg"
+                  data={`${user.keyData.carbohydrateCount}g`}
+                  label="Glucides"
+                  key="glucides"
+                />
+                <DataBlock
+                  color="pink"
+                  img="/assets/cheeseburger.svg"
+                  data={`${user.keyData.lipidCount}g`}
+                  label="Lipides"
+                  key="lipides"
+                />
+              </>
+            )}
           </div>
         </div>
       </div>
