@@ -1,4 +1,5 @@
-import { ResponsiveContainer, LineChart, Line, XAxis, Tooltip } from "recharts";
+import { LineChart, Line, XAxis, Tooltip } from "recharts";
+import AutoSizer from "react-virtualized-auto-sizer";
 import { Session } from "@/models/session";
 import styles from "@/styles/Session.module.css";
 import utilsStyles from "@/styles/utils.module.css";
@@ -21,44 +22,48 @@ export default function Session({ sessions }: SessionProps) {
       className={`${utilsStyles.block} ${utilsStyles["block-chart"]} ${utilsStyles["block--theme-1"]} ${styles.session}`}
     >
       <div className={styles.title}>Durée moyenne des sessions</div>
-      <ResponsiveContainer width={"99%"} height={200}>
-        <LineChart
-          data={sessions}
-          margin={{ top: 5, right: 5, left: 5, bottom: 5 }}
-        >
-          <defs>
-            <linearGradient id="myGradient">
-              <stop
-                offset="0%"
-                style={{ stopColor: "#fff", stopOpacity: 0.4 }}
-              />
-              <stop
-                offset="100%"
-                style={{ stopColor: "#fff", stopOpacity: 1 }}
-              />
-            </linearGradient>
-          </defs>
-          <XAxis
-            dataKey="day"
-            axisLine={false}
-            tickLine={false}
-            tick={{ fill: "#fff" }}
-            tickFormatter={(tick) => ticks[tick - 1]}
-            interval="preserveStartEnd"
-            minTickGap={0}
-            opacity={0.5}
-            style={{ fontSize: "12px" }}
-          />
-          <Tooltip content={renderTooltip} cursor={false} />
-          <Line
-            type="monotone"
-            dataKey="sessionLength"
-            dot={false}
-            stroke="url(#myGradient)"
-            strokeWidth={2}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      <AutoSizer>
+        {({ width, height }) => (
+          <LineChart
+            data={sessions}
+            margin={{ top: 5, right: 5, left: 5, bottom: 5 }}
+            width={width}
+            height={height}
+          >
+            <defs>
+              <linearGradient id="myGradient">
+                <stop
+                  offset="0%"
+                  style={{ stopColor: "#fff", stopOpacity: 0.4 }}
+                />
+                <stop
+                  offset="100%"
+                  style={{ stopColor: "#fff", stopOpacity: 1 }}
+                />
+              </linearGradient>
+            </defs>
+            <XAxis
+              dataKey="day"
+              axisLine={false}
+              tickLine={false}
+              tick={{ fill: "#fff" }}
+              tickFormatter={(tick) => ticks[tick - 1]}
+              interval="preserveStartEnd"
+              minTickGap={0}
+              opacity={0.5}
+              style={{ fontSize: "12px" }}
+            />
+            <Tooltip content={renderTooltip} cursor={false} />
+            <Line
+              type="monotone"
+              dataKey="sessionLength"
+              dot={false}
+              stroke="url(#myGradient)"
+              strokeWidth={2}
+            />
+          </LineChart>
+        )}
+      </AutoSizer>
     </div>
   );
 }
