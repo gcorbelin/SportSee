@@ -1,4 +1,5 @@
-import { PieChart, Pie, Text } from "recharts";
+import PropTypes from "prop-types";
+import { PieChart, Pie } from "recharts";
 import AutoSizer from "react-virtualized-auto-sizer";
 import styles from "@/styles/Objective.module.css";
 import utilsStyles from "@/styles/utils.module.css";
@@ -73,3 +74,7 @@ export default function Objective({ score }: ObjectiveProps) {
     </div>
   );
 }
+
+Objective.proptypes = {
+  score: PropTypes.number.isRequired,
+};

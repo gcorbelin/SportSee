@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { RadarChart, Radar, PolarGrid, PolarAngleAxis } from "recharts";
 import AutoSizer from "react-virtualized-auto-sizer";
 import { Kind, Stat, UserStats } from "@/models/stats";
@@ -51,3 +52,7 @@ export default function CharacterStats({ datas }: CharacterStatsProps) {
     </div>
   );
 }
+
+CharacterStats.propTypes = {
+  datas: PropTypes.instanceOf(UserStats).isRequired,
+};

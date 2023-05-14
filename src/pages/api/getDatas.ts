@@ -1,3 +1,4 @@
+import { plainToInstance } from "class-transformer";
 import { User } from "@/models/user";
 import { UserActivity } from "@/models/activity";
 
@@ -19,9 +20,9 @@ export const fetchUser = async () => {
     if (datas.data.score) {
       datas.data.todayScore = datas.data.score;
     }
-    return datas.data as User;
+    return plainToInstance(User, datas.data as object);
   } else {
-    return user.data as User;
+    return plainToInstance(User, user.data as object);
   }
 };
 
@@ -31,9 +32,9 @@ export const fetchSessions = async () => {
       `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_USER_ID}/average-sessions`
     );
     const datas = await response.json();
-    return datas.data as UserSessions;
+    return plainToInstance(UserSessions, datas.data as object);
   } else {
-    return userSessions.data as UserSessions;
+    return plainToInstance(UserSessions, userSessions.data as object);
   }
 };
 
@@ -43,9 +44,9 @@ export const fetchStats = async () => {
       `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_USER_ID}/performance`
     );
     const datas = await response.json();
-    return datas.data as UserStats;
+    return plainToInstance(UserStats, datas.data as object);
   } else {
-    return userPerformance.data as UserStats;
+    return plainToInstance(UserStats, userPerformance.data as object);
   }
 };
 
@@ -55,8 +56,8 @@ export const fetchActivity = async () => {
       `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_USER_ID}/activity`
     );
     const datas = await response.json();
-    return datas.data as UserActivity;
+    return plainToInstance(UserActivity, datas.data as object);
   } else {
-    return userActivity.data as UserActivity;
+    return plainToInstance(UserActivity, userActivity.data as object);
   }
 };

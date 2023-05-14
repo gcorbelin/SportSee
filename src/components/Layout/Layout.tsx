@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React from "react";
+import PropTypes from "prop-types";
 import Header from "@/components/Header/Header";
 import Aside from "@/components/Aside/Aside";
 import styles from "@/styles/Layout.module.css";
@@ -26,3 +27,9 @@ export default function Layout({ title, description, children }: LayoutProps) {
     </>
   );
 }
+
+Layout.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};

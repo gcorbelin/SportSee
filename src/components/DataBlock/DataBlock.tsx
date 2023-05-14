@@ -1,10 +1,18 @@
+import PropTypes from "prop-types";
 import styles from "@/styles/DataBlock.module.css";
 import utilsStyles from "@/styles/utils.module.css";
 import Image from "next/image";
 
+export enum Colors {
+  red = "red",
+  blue = "blue",
+  yellow = "yellow",
+  pink = "pink",
+}
+
 interface DataBlockProps {
   img: string;
-  color: "red" | "blue" | "yellow" | "pink";
+  color: Colors;
   data: string;
   label: string;
 }
@@ -25,3 +33,10 @@ export default function DataBlock({ img, color, data, label }: DataBlockProps) {
     </div>
   );
 }
+
+DataBlock.propTypes = {
+  img: PropTypes.string.isRequired,
+  color: PropTypes.oneOf<Colors>(Object.values(Colors)).isRequired,
+  data: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+};

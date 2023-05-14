@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { LineChart, Line, XAxis, Tooltip } from "recharts";
 import AutoSizer from "react-virtualized-auto-sizer";
 import { Session } from "@/models/session";
@@ -8,7 +9,7 @@ interface SessionProps {
   sessions: Session[];
 }
 
-export default function Session({ sessions }: SessionProps) {
+export default function Sessions({ sessions }: SessionProps) {
   const ticks = ["L", "M", "M", "J", "V", "S", "D"];
 
   const renderTooltip = ({ active, payload }: any) => {
@@ -67,3 +68,7 @@ export default function Session({ sessions }: SessionProps) {
     </div>
   );
 }
+
+Sessions.propTypes = {
+  sessions: PropTypes.arrayOf(PropTypes.instanceOf(Session)).isRequired,
+};

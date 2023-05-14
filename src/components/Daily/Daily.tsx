@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import {
   Bar,
   BarChart,
@@ -127,3 +128,7 @@ export default function Daily({ activity }: DailyProps) {
     </div>
   );
 }
+
+Daily.propTypes = {
+  activity: PropTypes.arrayOf(PropTypes.instanceOf(Activity)).isRequired,
+};

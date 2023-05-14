@@ -1,7 +1,15 @@
-export type Stat = {
+import { Type } from "class-transformer";
+
+export class Stat {
   value: number;
+
   kind: number;
-};
+
+  constructor(value: number, kind: number) {
+    this.value = value;
+    this.kind = kind;
+  }
+}
 
 export type Kind = {
   "1": string;
@@ -12,8 +20,17 @@ export type Kind = {
   "6": string;
 };
 
-export type UserStats = {
+export class UserStats {
   userId: number;
+
   kind: Kind;
+
+  @Type(() => Stat)
   data: Stat[];
-};
+
+  constructor(userId: number, kind: Kind, data: Stat[]) {
+    this.userId = userId;
+    this.kind = kind;
+    this.data = data;
+  }
+}
