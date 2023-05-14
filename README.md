@@ -2,37 +2,55 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Clone this repo from [Github](https://github.com/gcorbelin/SportSee.git).
+Then install packages by running:
+
+```bash
+npm i
+# or
+yarn install
+```
+
+## Development mode
+
 First, run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3001](http://localhost:3001) with your browser to launch dev mode.
+Dev mode uses mocked datas.
+They can be found in `pages/api/mockedDatas.ts`.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Production mode
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+To launch production mode, You will first need the backend project that provides the API.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### 1. Clone backend
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Clone the backend project from [Github](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git) then run it by following its Readme instructions.
 
-## Learn More
+Nothing has been changed so it should run on the `:3000` port.
 
-To learn more about Next.js, take a look at the following resources:
+### 2. Build Front-End
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Then build the Front-end project with:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+npm run build
+# or
+yarn build
+```
 
-## Deploy on Vercel
+### 3. Launch production mode
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Finally launch the Front-end project with:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+npm run start
+# or
+yarn start
+```
