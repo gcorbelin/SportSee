@@ -17,12 +17,25 @@ interface DailyProps {
 }
 
 export default function Daily({ activity }: DailyProps) {
+  const kgDelta = 3;
   const kgMin = activity.reduce((prev, curr) =>
     prev.kilogram < curr.kilogram ? prev : curr
   );
   const kgMax = activity.reduce((prev, curr) =>
     prev.kilogram > curr.kilogram ? prev : curr
   );
+  const kgTicks: number[] = [];
+  for (
+    let i = kgMin.kilogram - kgDelta;
+    i <= kgMax.kilogram + kgDelta;
+    i = i + 1
+  ) {
+    if (i % 3 === 0) {
+      kgTicks.push(i);
+    }
+  }
+
+  const calDelta = 30;
   const calMin = activity.reduce((prev, curr) =>
     prev.calories < curr.calories ? prev : curr
   );
@@ -63,16 +76,17 @@ export default function Daily({ activity }: DailyProps) {
               orientation="right"
               axisLine={false}
               tickLine={false}
-              domain={[kgMin.kilogram - 3, kgMax.kilogram + 3]}
+              domain={[kgMin.kilogram - 3, kgMax.kilogram + kgDelta]}
               stroke="#9B9EAC"
               yAxisId={"kilogram"}
+              ticks={kgTicks}
             />
             <YAxis
               dataKey="calories"
               orientation="right"
               axisLine={false}
               tickLine={false}
-              domain={[calMin.kilogram - 30, calMax.kilogram + 30]}
+              domain={[calMin.kilogram - 30, calMax.kilogram + calDelta]}
               stroke="#9B9EAC"
               yAxisId={"calories"}
               hide
