@@ -18,7 +18,6 @@ export default function CharacterStats({ datas }: CharacterStatsProps) {
   for (let i = 1; i <= 6; i++) {
     const stat = datas.data.find((elem) => elem.kind === i);
     if (stat) {
-      console.log(stat, typeof datas.kind);
       data.push({
         value: stat.value,
         subject: datas.kind[i.toString() as keyof Kind],
